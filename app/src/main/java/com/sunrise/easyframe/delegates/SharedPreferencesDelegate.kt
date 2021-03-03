@@ -6,7 +6,7 @@ import java.lang.RuntimeException
 import kotlin.reflect.KProperty
 
 /**
- *@author: JiangYu
+ *@author: Sunrise
  *Date: 2021/3/3
  *Time: 9:14
  *Email: e1175132893@outlook.com
