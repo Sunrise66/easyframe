@@ -9,7 +9,7 @@ import kotlin.reflect.KProperty
  *@author: JiangYu
  *Date: 2021/3/2
  *Time: 23:26
- *Email: jiangyu@haogroup.com
+ *Email: e1175132893@outlook.com
  */
 class PropertiesDelegate(
     private val context: Context,
@@ -19,8 +19,12 @@ class PropertiesDelegate(
     ReadOnlyProperty<Any, String> {
     private val properties by lazy {
         val prop = Properties()
-        context.assets.open(fileName).use {
-            prop.load(it)
+        try {
+            context.assets.open(fileName).use {
+                prop.load(it)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
         prop
     }
