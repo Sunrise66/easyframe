@@ -1,5 +1,6 @@
 package com.sunrise.easyframe.net
 
+import android.app.Application
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,6 +13,11 @@ import java.util.concurrent.TimeUnit
  *Date: 2021/3/3
  *Time: 13:59
  *Email: e1175132893@outlook.com
+ */
+/**
+ * 对Retrofit配置的简单封装
+ *
+ * 使用[createApi]方法前请先在[Application.onCreate]中初始化[NetConfig]，详见[NetConfig.init]
  */
 object CommonService {
 
@@ -28,14 +34,14 @@ object CommonService {
     }
 
     /**
-     * 会由默认Retrofit执行创建
+     * 会由默认Retrofit配置执行创建
      */
     fun <T : Any> createApi(apiClass: Class<T>): T {
         return retrofitDefault.create(apiClass)
     }
 
     /**
-     * Kotlin调用该方法存在OkHttpClient，请注意
+     * Kotlin调用该方法存在默认OkHttpClient，请注意
      * @param baseUrl
      * @param okHttpClient
      */
@@ -50,6 +56,9 @@ object CommonService {
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
+    /**
+     * 读取[NetConfig]
+     */
     fun getCustomRetrofit(
         baseUrl: String,
         vararg interceptors: Interceptor

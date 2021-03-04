@@ -11,8 +11,11 @@ import com.sunrise.easyframe.delegates.AbsProperties
  *Email: e1175132893@outlook.com
  */
 /**
- * 网络设置，如需使用请在Application中进行执行init初始化
+ * 网络设置，如需使用请在[Application.onCreate]执行[init]来初始化
+ *
  * 该类只是简单示范，可自定义更加丰富的设置来符合业务需求
+ *
+ * 配置详情在../assets/net_config.properties中，如果没有请自行创建，配置名请和字段保持一致
  */
 class NetConfig(context: Context) : AbsProperties(context, "net_config.properties") {
     val PRIMARY_SERVER_ADDRESS by prop
