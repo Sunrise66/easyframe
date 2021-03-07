@@ -1,6 +1,5 @@
-package com.sunrise.easyframe.net
+package com.sunrise.easyframe.common
 
-import android.app.Application
 import android.content.Context
 import com.sunrise.easyframe.delegates.AbsProperties
 
@@ -11,7 +10,7 @@ import com.sunrise.easyframe.delegates.AbsProperties
  *Email: e1175132893@outlook.com
  */
 /**
- * 网络设置，如需使用请在[Application.onCreate]执行[init]来初始化
+ * 网络设置
  *
  * 该类只是简单示范，可自定义更加丰富的设置来符合业务需求
  *
@@ -33,9 +32,10 @@ class NetConfig(context: Context) : AbsProperties(context, "net_config.propertie
          * 初始化方法，需在Application中执行该方法
          */
         @JvmStatic
-        fun init(application: Application) {
+        fun init(context: Context) {
             synchronized(NetConfig::class.java) {
-                instance = NetConfig(application)
+                instance =
+                    NetConfig(context)
             }
         }
 

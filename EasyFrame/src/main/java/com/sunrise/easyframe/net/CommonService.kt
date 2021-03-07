@@ -1,6 +1,6 @@
 package com.sunrise.easyframe.net
 
-import android.app.Application
+import com.sunrise.easyframe.common.NetConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit
  */
 /**
  * 对Retrofit配置的简单封装
- *
- * 使用[createApi]方法前请先在[Application.onCreate]中初始化[NetConfig]，详见[NetConfig.init]
  */
 object CommonService {
 
