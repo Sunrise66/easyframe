@@ -60,8 +60,8 @@ object CommonService {
     fun getCustomRetrofit(
         baseUrl: String,
         vararg interceptors: Interceptor
-    ) {
-        OkHttpClient.Builder().apply {
+    ): Retrofit {
+        val client = OkHttpClient.Builder().apply {
             connectTimeout(NetConfig.getInstance().CONNECT_TIMEOUT.toLong(), TimeUnit.SECONDS)
             readTimeout(NetConfig.getInstance().READ_TIMEOUT.toLong(), TimeUnit.SECONDS)
             writeTimeout(NetConfig.getInstance().WRITE_TIMEOUT.toLong(), TimeUnit.SECONDS)
@@ -69,6 +69,9 @@ object CommonService {
             for (interceptor in interceptors) {
                 addInterceptor(interceptor)
             }
-        }
+        }.build()
+        return Retrofit.Builder().baseUrl(baseUrl)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create()).build()
     }
 }
